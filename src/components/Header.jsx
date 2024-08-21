@@ -29,18 +29,18 @@ function Header () {
                 {isConnected ? (
                     <div className='connected'>
                         <Link to='/profile'>
-                            <i className='fa-solid fa-2x fa-circle-user' />
+                            <i className='fa fa-2x fa-user-circle' />
                             <p>{firstname}</p>
                         </Link>
                         <Link to='/' onClick={logoutHandler}>
-                            <i className='fa-solid fa-arrow-right-from-bracket' />
+						   <i className="fa-solid fa-arrow-right-from-bracket" />
                             <p> Sign out </p>
                         </Link>
                     </div>
                 ) : (
                     <div className='not-connected'>
                         <Link to='/login' >
-                            <i className="fa-solid fa-circle-user"></i>
+                            <i className="fa fa-user-circle"></i>
                             <p>Sign In</p>
                         </Link>
                     </div>
