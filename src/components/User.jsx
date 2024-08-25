@@ -22,12 +22,12 @@ function User () {
     /* Asynchronous username update function */
     const handleSubmitUserModif = async (event) => {
         event.preventDefault();
-        // if (!isValidName(firstName) || !isValidName(lastName)) {
-        //     setErrorMessage("Invalid name.");
-        //     return;
-        // } else {
-        //     setErrorMessage("");
-        // }
+        if (!isValidName(firstName) || !isValidName(lastName)) {
+            setErrorMessage("Invalid name.");
+            return;
+        } else {
+            setErrorMessage("");
+        }
         try {
 			const userNewData = {
 				firstName: firstName,

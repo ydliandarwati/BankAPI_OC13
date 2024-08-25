@@ -1,11 +1,11 @@
 export const isValidName = (name) => {
-    const regex = /^[a-zA-Z]+(?:[-']?[a-zA-Z]+)*$/;
+    const regex = /^([a-zA-ZÀ-ÿ-]{2,20})*$/;
     return regex.test(name);
 };
 
 
 export const isValidEmail = (email) => {
-    const regex = /^\S+@\S+\.\S+$/;
+    const regex = /^[a-z0-9._-]+@[a-z0-9._-]+\.[a-z0-9._-]+$/;
     return regex.test(email);
 };
 
