@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateFirstName, updateLastName } from '../redux/actions/user.actions.jsx';
 import { isValidName } from "../utils/regex.jsx";
@@ -19,11 +19,16 @@ function User () {
 
     const dispatch = useDispatch();
 
+	useEffect(() => {
+		setFirstName(userData.firstname);
+		setLastName(userData.lastname);
+	}, [userData]); 
+
     /* Asynchronous username update function */
     const handleSubmitUserModif = async (event) => {
         event.preventDefault();
         if (!isValidName(firstName) || !isValidName(lastName)) {
-            setErrorMessage("Invalid name.");
+            setErrorMessage("Invalid first or last name.");
             return;
         } else {
             setErrorMessage("");

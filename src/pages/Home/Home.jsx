@@ -18,11 +18,8 @@ function Home () {
     return (
         <div className='homepage'>
             <main>
-                {/* Returns banner*/}
                 <Banner />
                 <section className="features">
-                    {/* <h2 className='sr-only'>Features</h2> */}
-                    {/* Return items from json file with map */}
                     {FeaturesItemData.map((data) => (
                         /* Return item component */
                         < Item 

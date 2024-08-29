@@ -7,7 +7,6 @@ function Login () {
     return (
         <div className='signin-page'>
             <main className='bg-dark'>
-                {/* Returns form component */}
                 < Form />
             </main>
         </div>

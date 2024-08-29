@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { loginFailed, loginSuccess } from '../redux/actions/auth.actions.jsx';
-import { isValidEmail, isValidPassword } from '../utils/regex.jsx';
 import '../sass/components/_Form.scss';
 
 function Form () {
-    /* Allows you to retrieve the data entered by the user in the form */
+    /* Allows you to get the data entered by the user in the form */
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [rememberMe, setRememberMe] = useState(false);
@@ -19,15 +18,6 @@ function Form () {
     /* Asynchronous form function */
     const handleSubmit = async (event) => {
         event.preventDefault();
-        /* Handle error message */
-        if (!isValidEmail(email)) {
-            setErrorMessage("Invalid email adress");
-            return;
-        }
-        if (!isValidPassword(password)) {
-            setErrorMessage("Invalid password");
-            return;
-        }
         try {
             const response = await fetch("http://localhost:3001/api/v1/user/login", {
                 method: "POST",
@@ -36,10 +26,10 @@ function Form () {
                 },
                 body: JSON.stringify({email, password}),
             });
-			/*console.log (response)*/
             if (response.ok) {
                 const data = await response.json();
                 const token = data.body.token;
+
                 dispatch(loginSuccess(token));
                 sessionStorage.setItem("token", token);
                 if (rememberMe) {
@@ -48,6 +38,7 @@ function Form () {
                 navigate('/profile');
             } else {
                 const error = "Incorrect email/password"
+				setErrorMessage(error);
                 dispatch(loginFailed(error));
             }
         } catch (error) {

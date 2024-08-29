@@ -1,6 +1,8 @@
 import React from 'react';
 import '../sass/components/_Banner.scss';
 
+//all about home page
+
 function Banner () {
     return (
         <div className='banner'>
