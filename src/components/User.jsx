@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateFirstName, updateLastName } from '../redux/actions/user.actions.jsx';
-import { isValidName } from "../utils/regex.jsx";
 import '../sass/components/_UserProfile.scss';
 
 function User () {
@@ -18,6 +17,11 @@ function User () {
     const [errorMessage, setErrorMessage] = useState('');
 
     const dispatch = useDispatch();
+
+	const isValidName = (name) => {
+		const regex = /^([a-zA-ZÀ-ÿ-]{2,20})*$/;
+		return regex.test(name);
+	};
 
 	useEffect(() => {
 		setFirstName(userData.firstname);

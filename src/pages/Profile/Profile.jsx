@@ -35,7 +35,7 @@ function UserProfile () {
                             lastname: data.body.lastName,
                             username: data.body.userName
                         }
-                        /* Return user data in redux state */
+                        /* Return user data in redux state (store) */
                         dispatch(userProfile(userData));
                     } else {
                         console.log("error while retrieving profile");
