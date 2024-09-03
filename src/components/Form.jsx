@@ -38,7 +38,7 @@ function Form () {
                 navigate('/profile');
             } else {
                 const error = "Incorrect email/password"
-				setErrorMessage(error);
+                setErrorMessage(error);
                 dispatch(loginFailed(error));
             }
         } catch (error) {

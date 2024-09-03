@@ -10,7 +10,7 @@ function UserProfile () {
 
     const dispatch = useDispatch();
 
-	const token = useSelector((state) => state.auth.token);
+    const token = useSelector((state) => state.auth.token);
     /* Asynchronous function to get user data and updates it with useEffect */
     useEffect(() => {
         if (token) {
@@ -34,7 +34,7 @@ function UserProfile () {
                             firstname: data.body.firstName,
                             lastname: data.body.lastName,
                             username: data.body.userName
-                        }
+                    }
                         /* Return user data in redux state (store) */
                         dispatch(userProfile(userData));
                     } else {
@@ -53,7 +53,7 @@ function UserProfile () {
             <main className='bg-dark'>
                 {/* user info part */}
                 < User />
-				{/* transactions */}
+                {/* transactions */}
                 {AccountCardData.map((data) => (
                     <Account 
                         key={data.id}

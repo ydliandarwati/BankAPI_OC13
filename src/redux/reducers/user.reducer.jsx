@@ -23,7 +23,7 @@ export const userReducer = (state = initialState, action ) => {
                     firstname: action.payload
                 } 
             } 
-		case EDIT_LASTNAME: 
+        case EDIT_LASTNAME: 
             return {
                 ...state,
                 status: "MODIFIED",

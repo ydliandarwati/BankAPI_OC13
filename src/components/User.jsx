@@ -11,22 +11,22 @@ function User () {
     const [display, setDisplay] = useState(true);
     /* Get username */
     // const [userName, setUserName] = useState('');
-	const [firstName, setFirstName] = useState('');
-	const [lastName, setLastName] = useState('');
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
     /* Handle error message */
     const [errorMessage, setErrorMessage] = useState('');
 
     const dispatch = useDispatch();
 
-	const isValidName = (name) => {
-		const regex = /^([a-zA-ZÀ-ÿ-]{2,20})*$/;
-		return regex.test(name);
-	};
+    const isValidName = (name) => {
+        const regex = /^([a-zA-ZÀ-ÿ-]{2,20})*$/;
+        return regex.test(name);
+    };
 
-	useEffect(() => {
-		setFirstName(userData.firstname);
-		setLastName(userData.lastname);
-	}, [userData]); 
+    useEffect(() => {
+        setFirstName(userData.firstname);
+        setLastName(userData.lastname);
+    }, [userData]); 
 
     /* Asynchronous username update function */
     const handleSubmitUserModif = async (event) => {
@@ -38,23 +38,23 @@ function User () {
             setErrorMessage("");
         }
         try {
-			const userNewData = {
-				firstName: firstName,
-				lastName: lastName
-			  };
+            const userNewData = {
+                firstName: firstName,
+                lastName: lastName
+              };
             const response = await fetch('http://localhost:3001/api/v1/user/profile', {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`,
                 },
-            	body: JSON.stringify(userNewData)
+                body: JSON.stringify(userNewData)
 
-			});
+            });
             if (response.ok) {
                 const data = await response.json();
-				dispatch(updateFirstName(data.body.firstName));
-				dispatch(updateLastName(data.body.lastName));
+                dispatch(updateFirstName(data.body.firstName));
+                dispatch(updateLastName(data.body.lastName));
                 setDisplay(!display);
             } else {
                 console.log("Invalid Fields")
@@ -64,8 +64,8 @@ function User () {
             console.error(error);
         }
 
-		
-	
+        
+    
     }
     
     return (
@@ -89,7 +89,7 @@ function User () {
                                 id="firstname" 
                                 defaultValue={userData.firstname}
                                 // disabled={true}
-								onChange={(event) => setFirstName(event.target.value)}
+                                onChange={(event) => setFirstName(event.target.value)}
 
                             />
                         </div>
@@ -100,7 +100,7 @@ function User () {
                                 id="lastname" 
                                 defaultValue={userData.lastname}
                                 // disabled={true}
-								onChange={(event) => setLastName(event.target.value)}
+                                onChange={(event) => setLastName(event.target.value)}
 
                             />
                         </div>
