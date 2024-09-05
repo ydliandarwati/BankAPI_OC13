@@ -120,8 +120,12 @@ paths:
             description: Invalid Request
           "401":
             description: Unauthorized. The access token is missing or invalid.
+          "404":
+            description: Accounts not found.
           "500":
-            description: Internal Server Error
+          description: Internal Server Error
+
+
   /user/accounts/{accountId}/transactions:
       get:
         tags:
@@ -244,6 +248,8 @@ paths:
             description: Bad Request.The data provided for the partial update of the resource is invalid.
           "401":
             description: Unauthorized access.
+          "403":
+            description: Forbidden to access.
           "404":
             description: Transaction not found.
           "500":
@@ -323,6 +329,8 @@ paths:
             description: Success. The transaction categories have been successfully deleted.
           401:
             description: Unauthorized. The access token is missing or invalid.
+          403:
+            description: Forbidden to access.
           404:
             description: The specified transaction does not exist on the server
           500:
@@ -360,6 +368,8 @@ paths:
             description: Success.Transaction notes have been successfully deleted
           401:
             description: Unauthorized. The access token is missing or invalid.
+          403:
+            description: Forbidden to access.
           404:
             description: The specified transaction does not exist on the server
           500:
